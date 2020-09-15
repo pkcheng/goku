@@ -2,6 +2,16 @@ body {
   background-image: url("https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 }
 
+.task {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  text-align: left;
+  width: 80%;
+  height: 35px;
+  margin: 10px auto;
+}
+
 .task-box {
   background-color: #ffffff;
   min-height: 500px;
@@ -25,7 +35,7 @@ body {
   right: 0;
 }
 
-input {
+.input-box {
   border-radius: 20px;
   background: none repeat scroll 0 0 #ffffff;
   height: 35px;

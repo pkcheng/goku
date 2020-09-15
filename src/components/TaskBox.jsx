@@ -1,16 +1,28 @@
 import React, { Component } from "react";
 import { Task } from "./Task";
-import { TaskInput } from "./TaskInput";
 
 export class TaskBox extends Component {
-  state = {
-    count: 0,
-    task: {},
-  };
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="task-box">
-        <TaskInput />
+        <br />
+        {this.props.tasks.map((task) => {
+          return <Task value={task} />;
+        })}
+        <div className="task-input">
+          <input
+            value={this.props.value}
+            onChange={this.props.onChange}
+            class="input-box"
+            placeholder="Enter Task Here"
+          />
+          <button onClick={this.props.onSubmit} className="btn">
+            ↑
+          </button>
+        </div>
       </div>
     );
   }
