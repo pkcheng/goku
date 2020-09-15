@@ -8,8 +8,9 @@ body {
   border-width: 1px;
   text-align: left;
   width: 80%;
-  height: 35px;
-  margin: 10px auto;
+  height: 40px;
+  margin: 5px auto;
+  position: relative;
 }
 
 .task-box {
@@ -55,5 +56,18 @@ body {
 
 .btn:hover {
   background-color: #2a98ff;
+  color: white;
+}
+
+.trash.btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  position: absolute;
+  right: 0;
+}
+
+.trash.btn:hover {
+  background-color: #db524b;
   color: white;
 }
