@@ -9,15 +9,24 @@ class App extends React.Component {
   };
 
   handleSubmit = () => {
-    const tasks = this.state.tasks;
-    const newId = tasks.length === 0 ? 1 : tasks[tasks.length - 1].id + 1;
-    this.setState({
-      tasks: [
-        ...this.state.tasks,
-        { id: newId, value: this.state.value, selected: false },
-      ],
-      value: "",
-    });
+    if (this.state.value != "") {
+      const tasks = this.state.tasks;
+      const newId = tasks.length === 0 ? 1 : tasks[tasks.length - 1].id + 1;
+      this.setState({
+        tasks: [
+          ...this.state.tasks,
+          { id: newId, value: this.state.value, selected: false },
+        ],
+        value: "",
+      });
+    }
+  };
+
+  handleKeyPressSubmit = (e) => {
+    //Trigger enter key
+    if (e.key === "Enter") {
+      this.handleSubmit();
+    }
   };
 
   handleChange = (e) => {
@@ -52,6 +61,7 @@ class App extends React.Component {
         <TaskBox
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
+          onKeyPress={this.handleKeyPressSubmit}
           onDelete={this.handleDelete}
           onClick={this.handleClick}
           value={this.state.value}

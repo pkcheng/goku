@@ -20,6 +20,7 @@ export class TaskBox extends Component {
           <input
             value={this.props.value}
             onChange={this.props.onChange}
+            onKeyPress={this.props.onKeyPress}
             className="input-box"
             placeholder="Enter Task Here"
           />
