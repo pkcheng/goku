@@ -8,7 +8,12 @@ export class TaskBox extends Component {
         <br />
         {this.props.tasks.map((task) => {
           return (
-            <Task onDelete={this.props.onDelete} key={task.id} task={task} />
+            <Task
+              onClick={this.props.onClick}
+              onDelete={this.props.onDelete}
+              key={task.id}
+              task={task}
+            />
           );
         })}
         <div className="task-input">

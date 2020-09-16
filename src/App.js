@@ -5,14 +5,17 @@ import { TaskBox } from "./components/TaskBox";
 class App extends React.Component {
   state = {
     value: "",
-    tasks: [],
+    tasks: [{ id: 1, value: "a", selected: false }],
   };
 
   handleSubmit = () => {
     const tasks = this.state.tasks;
     const newId = tasks.length === 0 ? 1 : tasks[tasks.length - 1].id + 1;
     this.setState({
-      tasks: [...this.state.tasks, { id: newId, value: this.state.value }],
+      tasks: [
+        ...this.state.tasks,
+        { id: newId, value: this.state.value, selected: false },
+      ],
       value: "",
     });
   };
@@ -30,7 +33,18 @@ class App extends React.Component {
     });
   };
 
-  handleComplete = (e) => {};
+  handleClick = (taskId) => {
+    this.setState((state) => {
+      const tasks = state.tasks.map((task) => {
+        if (task.id === taskId) {
+          return { id: task.id, value: task.value, selected: !task.selected };
+        } else {
+          return task;
+        }
+      });
+      return { tasks };
+    });
+  };
 
   render() {
     return (
@@ -39,7 +53,7 @@ class App extends React.Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
           onDelete={this.handleDelete}
-          onComplete={this.handleComplete}
+          onClick={this.handleClick}
           value={this.state.value}
           tasks={this.state.tasks}
         />
