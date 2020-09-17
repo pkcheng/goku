@@ -1,28 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-export class Task extends Component {
-  render() {
-    return (
-      <div className="task">
-        <input
-          onClick={() => this.props.onClick(this.props.task.id)}
-          type="radio"
-          checked={this.props.task.selected}
-        />
-        <span className="task-name">
-          {this.props.task.selected === true ? (
-            <s>{this.props.task.value}</s>
-          ) : (
-            this.props.task.value
-          )}
-        </span>
-        <button
-          onClick={() => this.props.onDelete(this.props.task.id)}
-          className="btn trash"
-        >
-          🗑
-        </button>
-      </div>
-    );
-  }
-}
+const Task = ({ triggerCheckbox, handleDelete, selected, value, id }) => (
+  <div className="task">
+    <input
+      onClick={() => triggerCheckbox(id)}
+      type="checkbox"
+      checked={selected}
+      onChange={() => {}}
+    />
+    <span className={selected ? 'task-name' : ''}> {value} </span>
+    <button onClick={() => handleDelete(id)} className="btn trash">
+      🗑
+    </button>
+  </div>
+);
+
+export default Task;
